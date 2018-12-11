@@ -1,4 +1,4 @@
-package com.rivia.software.weathermvvm.data
+package com.rivia.software.weathermvvm.data.db.entity
 
 import com.google.gson.annotations.SerializedName
 

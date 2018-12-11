@@ -1,4 +1,4 @@
-package com.rivia.software.weathermvvm.data
+package com.rivia.software.weathermvvm.data.db.entity
 
 data class Condition(
     val code: Int,
