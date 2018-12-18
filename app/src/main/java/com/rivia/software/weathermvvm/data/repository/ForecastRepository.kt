@@ -6,6 +6,4 @@ import com.rivia.software.weathermvvm.data.db.unlocalized.UnitSpecificCurrentWea
 interface ForecastRepository {
 
     suspend fun getCurrentWeather(metric: Boolean): LiveData<out UnitSpecificCurrentWeatherEntry>
-
-
 }

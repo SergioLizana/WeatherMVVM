@@ -18,13 +18,14 @@ class ForecastRepositoryImpl(
 ) : ForecastRepository {
 
 
+
     init {
         weatherNetworkDataSource.downloadedCurrentWeather.observeForever{ newCurrentWeather ->
             persistFetchedCurrentWeather(newCurrentWeather)
         }
     }
 
-    private suspend fun initWeatherData(){
+    suspend fun initWeatherData(){
         if(isFetchCurrentNeeded(ZonedDateTime.now().minusHours(1)))
             fetchCurrentWeather()
     }
@@ -40,6 +41,7 @@ class ForecastRepositoryImpl(
 
     override suspend fun getCurrentWeather(metric: Boolean): LiveData<out UnitSpecificCurrentWeatherEntry> {
        return withContext(Dispatchers.IO){
+            initWeatherData()
             return@withContext if (metric) currentWeatherDao.getWeatherMetric()
             else currentWeatherDao.getWeatherImperial()
         }
